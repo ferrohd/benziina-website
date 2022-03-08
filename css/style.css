@@ -1,6 +1,9 @@
 /* Variables */
 :root {
     --icon-size: 5rem;
+    --img-height: 500px;
+    --img-border: .35rem;
+    --img-padding: 4rem;
 }
 
 body[data-brightness="light"] {
@@ -9,8 +12,8 @@ body[data-brightness="light"] {
     --text-color: #000;
     --primary-color: #4464ad;
     --on-primary-color: #fff;
-    --overlay-color: #000;
-    --primary-overlay-color: #000;
+    --overlay-color: rgba(0,0,0,0.1);
+    --primary-overlay-color: rgba(0,0,0,0.4);
 }
 body[data-brightness="dark"] {
     --background-color: #000;
@@ -18,8 +21,8 @@ body[data-brightness="dark"] {
     --text-color: #fff;
     --primary-color: #e4733f;
     --on-primary-color: #fff;
-    --overlay-color: #fff;
-    --primary-overlay-color: #000;
+    --overlay-color: rgba(255,255,255,0.1);
+    --primary-overlay-color: rgba(0,0,0,0.4);
 }
 
 /* Theme Change */
@@ -145,16 +148,29 @@ img {
 .section .img-container {
     position: relative;
 }
+.section:nth-of-type(odd) .img-container {
+    padding: var(--img-padding) 0 0 0;
+}
+.section:nth-of-type(even) .img-container {
+    padding: 0 0 var(--img-padding) 0;
+}
 .section .img{
     width: 300px;
+    border: var(--img-border) solid var(--overlay-color);
+}
+.section.main .img {
+    border-color: var(--primary-overlay-color);
 }
 .section:nth-of-type(odd) .img{
-    padding: 4rem 0 0 0;
     margin: auto 0 0 auto;
+    border-radius: 2rem 2rem 0 0;
+    border-bottom: none;
 }
 .section:nth-of-type(even) .img{
-    padding: 0 0 4rem 0;
     margin: auto auto 0 0;
+    border-radius: 0 0 2rem 2rem;
+    overflow: hidden;
+    border-top: none;
 }
 
 @media screen and (max-width: 700px){
@@ -163,9 +179,9 @@ img {
         position: absolute;
         bottom: 0;
         width: 100%;
-        height: calc(500px + 4rem);
+        height: calc(var(--img-height) + var(--img-padding) + var(--img-border));
         background-color: var(--overlay-color);
-        opacity: 10%;
+        opacity: .75;
     }
     .section.main::before {
         background-color: var(--primary-overlay-color);
@@ -179,7 +195,7 @@ img {
     .section:nth-of-type(odd) .img,
     .section:nth-of-type(even) .img {
         width: auto;
-        height: 500px;
+        height: var(--img-height);
         position: relative;
         margin: 0 auto;
     }
