@@ -1,6 +1,7 @@
 /* Variables */
 :root {
     --icon-size: 5rem;
+    --icon-small-size: 3.5rem;
     --img-height: 500px;
     --img-border: .35rem;
     --img-padding: 4rem;
@@ -54,7 +55,7 @@ a:hover {
 }
 h1 {
     font-size: 2.6rem;
-    line-height: 1em;
+    line-height: 1.1em;
     color: var(--text-color);
 }
 h2 {
@@ -62,11 +63,25 @@ h2 {
     line-height: 1.1em;
     color: var(--text-color);
 }
-p {
+h3 {
     font-size: 1.4rem;
-    line-height: 1.2em;
+    line-height: 1.1em;
+    color: var(--text-color);
+}
+h4 {
+    font-size: 1rem;
+    line-height: 1.1em;
+    color: var(--text-color);
+}
+p {
+    font-size: 1rem;
+    line-height: 1.3em;
     color: var(--text-color);
     font-weight: 300;
+}
+strong {
+    color: var(--text-color);
+    font-weight: 500;
 }
 img {
     display: block;
@@ -103,7 +118,12 @@ img {
 .icon {
     width: var(--icon-size);
     height: var(--icon-size);
-    border-radius: 1em;
+    border-radius: 1rem;
+}
+.icon.small {
+    width: var(--icon-small-size);
+    height: var(--icon-small-size);
+    border-radius: .7rem;
 }
 
 /* Content Sections */
@@ -120,17 +140,24 @@ img {
     background-color: var(--primary-color);
 }
 
-.section .wrapper {
+.section.legalese {
+    padding: 1rem 0;
+}
+
+.section.flex .wrapper {
     display: flex;
     flex-wrap: nowrap;
     align-items: stretch;
     gap: 2rem;
 }
-.section:nth-of-type(odd) .wrapper {
+.section.flex:nth-of-type(odd) .wrapper {
     flex-direction: row;
 }
-.section:nth-of-type(even) .wrapper {
+.section.flex:nth-of-type(even) .wrapper {
     flex-direction: row-reverse;
+}
+.section.legalese .wrapper {
+    max-width: 800px;
 }
 .section .wrapper > * {
     flex: 1;
@@ -139,9 +166,16 @@ img {
 .section .content {
     padding: 4rem 0;
 }
+.section .half {
+    width: 50%;
+    max-width: 300px;
+}
 .section .title,
 .section .subtitle {
     margin: 1.5rem 0;
+}
+.section .subtitle {
+    font-size: 1.4rem;
 }
 .section.main .title,
 .section.main .subtitle {
@@ -177,7 +211,7 @@ img {
 }
 
 @media screen and (max-width: 700px){
-    .section::before {
+    .section.overlay::before {
         content: "";
         position: absolute;
         bottom: 0;
@@ -186,11 +220,11 @@ img {
         background-color: var(--overlay-color);
         opacity: .75;
     }
-    .section.main::before {
+    .section.main.overlay::before {
         background-color: var(--primary-overlay-color);
     }
-    .section:nth-of-type(odd) .wrapper,
-    .section:nth-of-type(even) .wrapper {
+    .section.flex:nth-of-type(odd) .wrapper,
+    .section.flex:nth-of-type(even) .wrapper {
         flex-direction: column;
         gap: 0;
     }
@@ -222,4 +256,8 @@ img {
     align-items: center;
     justify-content: center;
     gap: 2rem;
+}
+.footer .small {
+    font-size: 0.8em;
+    font-weight: 300;
 }
