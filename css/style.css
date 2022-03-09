@@ -256,6 +256,7 @@ img {
     align-items: center;
     justify-content: center;
     gap: 2rem;
+    padding: 0;
 }
 .footer .small {
     font-size: 0.8em;
